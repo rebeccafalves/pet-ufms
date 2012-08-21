@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link href="style.css" type="text/css" rel="stylesheet" />
+        <title> PET - Programa de Educação Tutorial </title>
+        <link rel="shortcut icon" href="images/pet.ico" />
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    </head>
+
+    <body>
+
+                <div id="header">
+            <!--<img src="images/pet.png" alt="A imagem não foi encontrada" width="88" height="78" > -->
+            <div id="logo"><span class="orangeText">PET</span> Sis<span class="blueText">temas</span></div>
+            <span id="search">
+                <form action="http://www.google.com/search" method="get" target="_blank">
+                    <tr>
+                        <td align="middle" width="196">
+                            <span><a href="http://www.google.com/" target="_blank"></a></span>
+                            <input maxLength="255" size="23" name="q"></input>
+                            <input type="hidden" value="en" name="hl"></input>
+                            <input type="submit" value="Pesquisa via Google" name="btnG"></input>
+                        </td>
+                    </tr>
+                </form>
+            </span>
+            <!--</img> -->
+        </div><!-- end #header -->
+
+        <div id="navbar"> <!-- menu !-->
+            <ul>
+                <li ><a href="index.php">Início</a></li> <!-- 5 ultimos posts de notícias-->
+                <li ><a href="nossaHistoria.php">Nossa História</a></li> <!-- html -->
+                <li ><a href="membros.php">Membros</a></li>         <!-- banco-->       
+                <li ><a href="noticias.php">Notícias</a></li>  <!-- banco -->
+                <li ><a href="projetos.php">Projetos</a></li>  <!-- banco -->
+                <li ><a href="multimidia.php">Multimídia</a></li> <!-- html -->
+                <li ><a href="facaParte.php">Faça Parte</a></li> <!-- html -->
+                <li ><a href="contato.php">Contato</a></li> <!-- mandar por e-mail -->
+                <div id="data">                 
+                    <li id="current"><a href="login.php">Faça seu login</a></li>
+                </div>
+            </ul>
+            <?php
+            // put your code here
+            ?>
+        </div> <!-- FIM do menu !-->
+        <div id="leftside">
+
+        </div>
+
+        <div id="main"> <!-- login !-->
+            <div id="loginbox">
+                <div id="title">Faça seu Login</div>
+                <form name="input" action="realizarLogin.php" method="get">
+                    <ul><br/>
+                        <li>Login: <input type="text" name="user" id="inputbox" /></li>
+                        <li>Senha: <input type="password" name="pass" id="inputbox" /></li><br />
+                        <li><input type="submit" value="Login" id="button" /></li>
+                    </ul>
+                </form>
+            </div>
+        </div> <!-- FIM login !-->
+
+
+    </body>
+</html>

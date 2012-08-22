@@ -19,10 +19,24 @@ a {
 
 }
 
+a.link {
+	font-size: 20px;
+	color: black;
+}
+
 a:hover {
 
     text-decoration: none;
     color: #ffa242;
+}
+
+a.link:hover{
+	text-decoration: underline;
+}
+
+p.p1{
+	font-size:11px;
+	line-height: 5%;
 }
 
 p {
@@ -160,7 +174,6 @@ img {
 }
 
 
-
 #navbar ul {
 
     margin: 0; padding: 0 0 0 85px;
@@ -268,7 +281,6 @@ img {
 
 }
 
-
 #inputbox {
 
     background-color: #fff;
@@ -362,4 +374,16 @@ width: 550px; margin-left: 120px; padding:10px;}
     font-size: 18px;
     font-family: Helvetica, Arial, sans-serif;
     padding: 0 0 10px 0;
+}
+
+#img1{
+	
+}
+
+#div1{
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	margin-bottom: 100px;
+	height: 40px;
+	background-color: #F8F8F8;
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2012 at 12:11 AM
+-- Generation Time: Aug 22, 2012 at 12:44 AM
 -- Server version: 5.5.19
 -- PHP Version: 5.4.6
 
@@ -19,6 +19,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `pet-sistemas`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `documentos`
+--
+
+CREATE TABLE IF NOT EXISTS `documentos` (
+  `nome` varchar(100) NOT NULL,
+  `caminho` varchar(100) NOT NULL,
+  `id_documentos` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_documentos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `faca_parte`
+--
+
+CREATE TABLE IF NOT EXISTS `faca_parte` (
+  `caminho` varchar(100) NOT NULL,
+  `id_faca_parte` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_faca_parte`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -78,6 +103,22 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `id_projeto` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id_projeto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `publicacoes`
+--
+
+CREATE TABLE IF NOT EXISTS `publicacoes` (
+  `autor` varchar(100) NOT NULL,
+  `titulo` varchar(100) NOT NULL,
+  `assunto` varchar(100) NOT NULL,
+  `caminho` varchar(100) NOT NULL,
+  `data_pub` date NOT NULL,
+  `id_publicacoes` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_publicacoes`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 

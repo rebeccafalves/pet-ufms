@@ -59,6 +59,8 @@ CREATE TABLE IF NOT EXISTS `noticia` (
   `autor` int(11) unsigned NOT NULL,
   `assunto` varchar(100) NOT NULL,
   `tipo` varchar(3) NOT NULL COMMENT 'ensino = ens, pesquisa = pes, extensao = ext, diversos = div',
+  CHECK ((`tipo` = 'ens') OR (`tipo` = 'pes') OR (`tipo` = 'ext') OR (`tipo` = 'div')),
+  CHECK (`data` LIKE '----/--/--'),	
   PRIMARY KEY (`id_noticia`),
   KEY `autor` (`autor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -82,6 +84,9 @@ CREATE TABLE IF NOT EXISTS `petiano` (
   `data_ini` date NOT NULL,
   `data_fim` date NOT NULL,
   `id_usuario` int(11) unsigned NOT NULL,
+  CHECK (`data_fim` LIKE '----/--/--'),
+  CHECK (`data_ini` LIKE '----/--/--'),
+  CHECK (`data_nasc` LIKE '----/--/--'),
   PRIMARY KEY (`rga`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `rg` (`rg`,`org_exp`),
@@ -101,6 +106,8 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `descricao` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
   `id_projeto` int(11) unsigned NOT NULL,
+   CHECK (`data_fim` LIKE '----/--/--'),
+  CHECK (`data_ini` LIKE '----/--/--'),
   PRIMARY KEY (`id_projeto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -117,6 +124,7 @@ CREATE TABLE IF NOT EXISTS `publicacoes` (
   `caminho` varchar(100) NOT NULL,
   `data_pub` date NOT NULL,
   `id_publicacoes` int(11) NOT NULL AUTO_INCREMENT,
+  CHECK (`data_pub` LIKE '----/--/--'),
   PRIMARY KEY (`id_publicacoes`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -130,6 +138,8 @@ CREATE TABLE IF NOT EXISTS `tutor` (
   `data_ini` date NOT NULL,
   `data_fim` date DEFAULT NULL,
   `id_tutor` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  CHECK (`data_ini` LIKE '----/--/--'),
+  CHECK (`data_fim` LIKE '----/--/--'),
   PRIMARY KEY (`id_tutor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -147,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `permissao` int(11) DEFAULT NULL,
   `descricao` text,
   `email` varchar(100) DEFAULT NULL,
+  CHECK(`email` LIKE '%@%'),
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `nome_usuario_UNIQUE` (`nome_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`)

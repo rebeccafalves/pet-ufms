@@ -43,7 +43,7 @@ if ($_GET['cod'] != null)
             <ul>
                 <li <?php if($ID == 'home')setCurrent(); ?>><a href="?cod=home">Início</a></li> <!-- 5 ultimos posts de notícias-->
                 <li <?php if($ID == 'nossaHistoria') setCurrent(); ?>><a href="?cod=nossaHistoria">Nossa História</a></li> <!-- html -->
-                <li <?php if($ID == 'membros') setCurrent(); ?>><a href="?cod=membros">Membros</a></li>         <!-- banco-->       
+                <li <?php if($ID == 'usuarios') setCurrent(); ?>><a href="?cod=usuarios">Usuários</a></li>         <!-- banco-->       
                 <li <?php if($ID == 'noticias') setCurrent(); ?>><a href="?cod=noticias">Notícias</a></li>  <!-- banco -->
                 <li <?php if($ID == 'projetos') setCurrent(); ?>><a href="?cod=projetos">Projetos</a></li>  <!-- banco -->
                 <li <?php if($ID == 'publicacoes') setCurrent(); ?>><a href="?cod=publicacoes">Publicações</a></li>  <!-- banco -->

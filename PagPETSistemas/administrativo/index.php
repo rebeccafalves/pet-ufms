@@ -24,7 +24,7 @@ if ($_GET['cod'] != null)
         <div id="leftside">
             <h2 >Cadastro</h2>
             <ul>
-                <li><a href="?cod=cadastrarMembros">Membros</a></li>
+                <li><a href="?cod=cadastrarUsuarios">Usuários</a></li>
                 <li><a href="?cod=cadastrarNoticias">Notícias</a></li>
                 <li><a href="?cod=cadastrarProjetos">Projetos</a></li>
                 <li><a href="?cod=cadastrarPlanejamentos">Planejamentos</a></li>
@@ -33,7 +33,7 @@ if ($_GET['cod'] != null)
             </ul>
             <h2 >Alteração</h2>
             <ul>
-                <li><a href="?cod=alterarMembros">Membros</a></li>
+                <li><a href="?cod=alterarUsuarios">Usuários</a></li>
                 <li><a href="?cod=alterarNoticias">Notícias</a></li>
                 <li><a href="?cod=alterarProjetos">Projetos</a></li>
                 <li><a href="?cod=alterarPlanejamentos">Planejamentos</a></li>
@@ -41,7 +41,7 @@ if ($_GET['cod'] != null)
             </ul>
             <h2 >Exclusão</h2>
             <ul>
-                <li><a href="?cod=excluirMembros">Membros</a></li>
+                <li><a href="?cod=excluirUsuarios">Usuários</a></li>
                 <li><a href="?cod=excluirNoticias">Notícias</a></li>
                 <li><a href="?cod=excluirProjetos">Projetos</a></li>
                 <li><a href="?cod=excluirPlanejamentos">Planejamentos</a></li>

@@ -13,8 +13,9 @@ if ($_GET['cod'] != null)
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <link href="style.css" type="text/css" rel="stylesheet" />
-        <title> PET - Programa de Educação Tutorial </title>
+       <link href="style2.css" type="text/css" rel="stylesheet" media="screen and (max-width: 1024px)"/> 
+        <link href="style.css" type="text/css" rel="stylesheet" media="screen and (min-width: 1100px)"/>
+		<title> PET - Programa de Educação Tutorial </title>
         <link rel="shortcut icon" href="images/pet.ico" />
         <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     </head>
@@ -60,7 +61,12 @@ if ($_GET['cod'] != null)
 ?>
         </div> <!-- FIM do menu !-->
         <div id="leftside">
-
+		<h2> Links Úteis</h2><br/>
+		<a href='http://www.ufms.br' target= '_blank'><img src = 'images/left-side/logo-ufms.png'/>  </a><br/><br/><hr/>
+		<a href='http://www.facom.ufms.br' target= '_blank'><img src = 'images/left-side/logo-facom.png'/>  </a><br/><br/><hr/>
+		<a href='http://sigpet.mec.gov.br/' target= '_blank'><img src = 'images/left-side/sigpet_logo.png'/>  </a><br/><br/><hr/>
+		<a href='http://www.del.ufms.br/pet/' target= '_blank'><img src = 'images/left-side/logo-engele.png'/>  </a><br/><br/><hr/>
+		<a href='http://pet.ledes.net/' target= '_blank'><img src = 'images/left-side/logo-ciencias.png'/>  </a><br/><br/><hr/>
         </div>
 
         <div id="main">

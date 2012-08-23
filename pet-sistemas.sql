@@ -74,12 +74,7 @@ CREATE TABLE IF NOT EXISTS `noticia` (
   `autor` int(11) unsigned NOT NULL,
   `assunto` varchar(100) NOT NULL,
   `tipo` varchar(3) NOT NULL COMMENT 'ensino = ens, pesquisa = pes, extensao = ext, diversos = div',
-<<<<<<< HEAD
-  CHECK ((`tipo` = 'ens') OR (`tipo` = 'pes') OR (`tipo` = 'ext') OR (`tipo` = 'div')),
-  CHECK (`data` LIKE '----/--/--'),	
-=======
   `caminho_id_arquivos` int(10) unsigned NOT NULL,
->>>>>>> 01acf18d2ab6558457193aec5e525632391680c6
   PRIMARY KEY (`id_noticia`),
   KEY `autor` (`autor`),
   KEY `caminho_id_arquivos` (`caminho_id_arquivos`)
@@ -103,9 +98,6 @@ CREATE TABLE IF NOT EXISTS `petiano` (
   `data_ini` date NOT NULL,
   `data_fim` date NOT NULL,
   `id_usuario` int(11) unsigned NOT NULL,
-  CHECK (`data_fim` LIKE '----/--/--'),
-  CHECK (`data_ini` LIKE '----/--/--'),
-  CHECK (`data_nasc` LIKE '----/--/--'),
   PRIMARY KEY (`rga`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `rg` (`rg`,`org_exp`),
@@ -125,15 +117,10 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `descricao` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
   `id_projeto` int(11) unsigned NOT NULL,
-<<<<<<< HEAD
-   CHECK (`data_fim` LIKE '----/--/--'),
-  CHECK (`data_ini` LIKE '----/--/--'),
-  PRIMARY KEY (`id_projeto`)
-=======
-  `arquivo_id_arquivos` int(10) unsigned DEFAULT NULL,
+   `arquivo_id_arquivos` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_projeto`),
+ 
   KEY `arquivo_id_arquivos` (`arquivo_id_arquivos`)
->>>>>>> 01acf18d2ab6558457193aec5e525632391680c6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -149,13 +136,8 @@ CREATE TABLE IF NOT EXISTS `publicacoes` (
   `caminho_id_arquivos` int(10) unsigned NOT NULL,
   `data_pub` date NOT NULL,
   `id_publicacoes` int(11) NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
-  CHECK (`data_pub` LIKE '----/--/--'),
-  PRIMARY KEY (`id_publicacoes`)
-=======
   PRIMARY KEY (`id_publicacoes`),
   KEY `caminho_id_arquivos` (`caminho_id_arquivos`)
->>>>>>> 01acf18d2ab6558457193aec5e525632391680c6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -168,8 +150,6 @@ CREATE TABLE IF NOT EXISTS `tutor` (
   `data_ini` date NOT NULL,
   `data_fim` date DEFAULT NULL,
   `id_tutor` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  CHECK (`data_ini` LIKE '----/--/--'),
-  CHECK (`data_fim` LIKE '----/--/--'),
   PRIMARY KEY (`id_tutor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -187,12 +167,8 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `permissao` int(11) DEFAULT NULL,
   `descricao` text,
   `email` varchar(100) DEFAULT NULL,
-<<<<<<< HEAD
-  CHECK(`email` LIKE '%@%'),
-=======
   `foto_id_arquivos` int(10) unsigned DEFAULT NULL,
   `status` varchar(1) NOT NULL,
->>>>>>> 01acf18d2ab6558457193aec5e525632391680c6
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `nome_usuario_UNIQUE` (`nome_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`),
@@ -218,7 +194,6 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
 -- Constraints for dumped tables
 --
 
---
 -- Constraints for table `documentos`
 --
 ALTER TABLE `documentos`

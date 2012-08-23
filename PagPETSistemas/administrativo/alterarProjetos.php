@@ -54,15 +54,69 @@ else if ($in == 2)
             $query2 = "select * from projeto where projeto.id_projeto =  ";
             $query2 = mysql_query($query2, $conexao);
             
-				if(isset($_POST['id_projeto'])){
+				/*if(isset($_POST['id_projeto'])){
 						$id_projeto = $_POST['id_projeto'];
-				}            
+				}*/           
             ?>
             
             <br />
             
             <div id="dadosProjeto">
+            	<b>Nome do Projeto:</b>
+            	<input size="60px" type="text" name="nomeProjeto" />
+            	<br />
+
+            	<b>Data de Inicio: </b>
+            	<input id="datef" maxlength="10" size="8px" type="text" name="dataInicio" />
+            	<br />
+
+            	<b>Data de Fim: </b>
+            	<input id="date" maxlength="10" size="8px" type="text" name="dataFim" />
+            	<br />
             
+            	<b>Descrição:</b>
+            	<br />
+            	<textarea rows="10" cols="30" name ="desc" style="width:300px;height:100px"></textarea>
+            	<br />
+            
+            	<?php
+            	$query = "select * from usuario as u join tutor as t on u.id_usuario = t.id_tutor";
+            	$query = mysql_query($query, $conexao);
+            	?>
+            
+            	<b>Tutor:  </b>
+            	<select  name="tutor">
+               	<?php while ($dados = mysql_fetch_array($query)) { ?>
+                  	<option value="<?php echo $dados[3] ?>"><?php echo $dados[0] ?></option>
+              		<?php } ?>
+            	</select>
+            	<br />
+            
+            	<b>Tipo:  </b>
+            	<select name="tipo">
+                	<option value="1">ensino</option>
+                	<option value="2">pesquisa</option>
+                	<option value="3">extensão</option>
+            	</select>
+            	<br />
+					
+					<!-- Alunos em projetos deve vir selecionado -->            	
+            	<?php
+            	$query = "SELECT * FROM usuario";
+            	$query = mysql_query($query, $conexao);
+            	?>
+            
+            	<b>Alunos:  </b>
+            	<br />
+            
+            	<select multiple="multiple" name="usuario_id_usuario" style="width:300px;height:200px">
+            	<?php while ($dados = mysql_fetch_array($query)) { ?>
+                	<option value="<?php echo $dados[0] ?>"><?php echo $dados[3] ?></option><br />
+            	<?php } ?>
+            	</select>
+            
+            	<br />
+            	<input type="submit" value="Altualizar"/>
             </div>            
             
          </form>

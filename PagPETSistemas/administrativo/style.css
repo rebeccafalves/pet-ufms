@@ -53,8 +53,6 @@ img {
     height: auto;
     background-color: #fff;
 
-
-
 }
 
 #header {
@@ -145,6 +143,10 @@ img {
 
 /* Other Id's */
 
+#h2_custom1 {
+	text-align: center;
+}
+
 #header #logo {
 
     font-size: 3.5em;
@@ -152,9 +154,7 @@ img {
     font-weight: bolder;
     float: left;
     padding-left: 25px;
-
-
-
+    
 }
 
 #header #search {

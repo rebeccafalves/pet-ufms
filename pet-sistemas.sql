@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 22, 2012 at 08:43 PM
+-- Generation Time: Aug 23, 2012 at 02:48 AM
 -- Server version: 5.5.19
 -- PHP Version: 5.4.6
 
@@ -117,9 +117,8 @@ CREATE TABLE IF NOT EXISTS `projeto` (
   `descricao` int(11) NOT NULL,
   `tipo` int(11) NOT NULL,
   `id_projeto` int(11) unsigned NOT NULL,
-   `arquivo_id_arquivos` int(10) unsigned DEFAULT NULL,
+  `arquivo_id_arquivos` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id_projeto`),
- 
   KEY `arquivo_id_arquivos` (`arquivo_id_arquivos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -150,7 +149,9 @@ CREATE TABLE IF NOT EXISTS `tutor` (
   `data_ini` date NOT NULL,
   `data_fim` date DEFAULT NULL,
   `id_tutor` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_tutor`)
+  `id_usuario` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_tutor`),
+  KEY `id_usuario` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -194,6 +195,7 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
 -- Constraints for dumped tables
 --
 
+--
 -- Constraints for table `documentos`
 --
 ALTER TABLE `documentos`
@@ -234,7 +236,7 @@ ALTER TABLE `publicacoes`
 -- Constraints for table `tutor`
 --
 ALTER TABLE `tutor`
-  ADD CONSTRAINT `tutor_ibfk_2` FOREIGN KEY (`id_tutor`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `tutor_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Constraints for table `usuario`

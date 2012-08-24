@@ -1,11 +1,11 @@
-<h1>Notícias</h1>
+ï»¿<h1>NotÃ­cias</h1>
 <div style =	"border-top: 1px solid gray;
 				border-bottom: 1px solid gray;
 				margin-bottom: 50px;
 				height: 40px;
 				background-color: #F8F8F8;">
 				
-<h2>Últimas notícias<h2>
+<h2>Ãšltimas notÃ­cias<h2>
 </div>
 
 <?php

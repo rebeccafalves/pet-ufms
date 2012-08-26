@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 26/08/2012 às 17h48min
+-- Tempo de Geração: 26/08/2012 às 18h27min
 -- Versão do Servidor: 5.5.19
 -- Versão do PHP: 5.3.9
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `arquivos` (
 --
 
 CREATE TABLE IF NOT EXISTS `documentos` (
-  `tipo` enum('relatorio','planejamento','editais','modelos') NOT NULL COMMENT 'tipos de documentos',
+  `tipo` enum('relatorio','planejamento','editais','modelos','outros') NOT NULL COMMENT 'tipos de documentos',
   `id_documentos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `caminho_id_arquivos` int(10) unsigned NOT NULL,
   `ano` int(11) NOT NULL,
@@ -223,8 +223,8 @@ ALTER TABLE `noticia`
 -- Restrições para a tabela `petiano`
 --
 ALTER TABLE `petiano`
-  ADD CONSTRAINT `petiano_ibfk_3` FOREIGN KEY (`foto_id`) REFERENCES `arquivos` (`id_arquivos`),
-  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `petiano_ibfk_3` FOREIGN KEY (`foto_id`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
 -- Restrições para a tabela `projeto`

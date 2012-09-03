@@ -20,23 +20,17 @@ a {
 }
 
 a.link {
-	font-size: 20px;
 	color: black;
 }
 
 a:hover {
-
     text-decoration: none;
     color: #ffa242;
 }
 
 a.link:hover{
 	text-decoration: underline;
-}
-
-p.p1{
-	font-size:11px;
-	line-height: 5%;
+	color: black;
 }
 
 p {
@@ -58,18 +52,13 @@ ul {
 img {
     float:left;
 }
-
 /* Layout */
 
 #wrapper {
-
     margin: 0px auto;
     width: 100%;
     height: auto;
     background-color: #fff;
-
-
-
 }
 
 #header {
@@ -150,6 +139,40 @@ img {
 }
 
 /* Other Id's */
+
+#div_custom1 {
+	border-top: 1px;
+	border-top-style: dotted;
+}
+
+#img_custom1 {
+	width: 76px;
+	height: 76px;
+}
+
+#h2_custom1 {
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	margin-bottom: 50px;
+	background-color: #F8F8F8;
+	padding: 5px;
+	color: #FF9900;
+}
+
+#h2_custom2 {
+	margin: 0px;
+	padding: 0px;
+}
+
+#hr_custom1 {
+	border-style: dotted;
+}
+
+#p_custom1 {
+	font-size: 11px;
+	margin: 0px;
+	padding: 0px;
+}
 
 #header #logo {
 
@@ -374,16 +397,4 @@ width: 550px; margin-left: 120px; padding:10px;}
     font-size: 18px;
     font-family: Helvetica, Arial, sans-serif;
     padding: 0 0 10px 0;
-}
-
-#img1{
-	
-}
-
-#div1{
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	margin-bottom: 100px;
-	height: 40px;
-	background-color: #F8F8F8;
 }

@@ -54,18 +54,18 @@
             <td>
                 <?php
                 include ("includes/funcoes/conexao.php");
-                $query = "select u.nome, u.email, u.nome_usuario, u.permissao, u.descricao, u.status, t.data_ini from tutor t join usuario u on t.id_usuario = u.id_usuario";
+                $query = "select u.nome, u.email, u.lattes, t.data_ini, t.data_fim from tutor t join usuario u on t.id_usuario = u.id_usuario";
                 $result = mysql_query($query);
                 $num = mysql_num_rows($result);
                 for ($i = 0; $i < $num; $i++) {
                     $row = mysql_fetch_row($result);
                     echo "<div class='membros'><b>  Nome:</b>  $row[0]<br/>
                     <b>E-mail:</b> $row[1]<br/>
-                    <b>Usuário:</b> $row[2]<br/>
-                    <b>Permissão:</b> $row[3]<br/>
-                    <b>Observações:</b> $row[4]<br/>
-                    <b>Status:</b> $row[5]<br/>
-                    <b>Data de início:</b>" . substr($row[6], -2) . "/" . substr($row[6], 5, 2) . "/" . substr($row[6], 0, 4) . "<br/>";
+                    <b>Lattes:</b> $row[2]<br/>
+                    <b>Data de início:</b>" . substr($row[3], -2) . "/" . substr($row[3], 5, 2) . "/" . substr($row[3], 0, 4) . "<br/>";
+                    if (!empty($row[4])) {
+                        echo "<b>Data Final:</b>" . substr($row[4], -2) . "/" . substr($row[4], 5, 2) . "/" . substr($row[4], 0, 4) . "<br/>";
+                    }
                     echo "</div><br/>";
                 }
                 ?>
@@ -82,24 +82,25 @@
             <td>
                 <?php
                 include ("includes/funcoes/conexao.php");
-                $query = "select u.nome, u.email, u.nome_usuario, u.permissao, u.descricao, u.status, p.rga, p.cpf, p.telefone, p.endereco, p.lattes, p.data_nasc, p.data_ini  from petiano p join usuario u on p.id_usuario = u.id_usuario";
+                $query = "select u.nome, u.email, u.lattes, u.descricao, u.status, p.data_ini, p.data_fim from petiano p join usuario u on p.id_usuario = u.id_usuario";
                 $result = mysql_query($query);
                 $num = mysql_num_rows($result);
                 for ($i = 0; $i < $num; $i++) {
                     $row = mysql_fetch_row($result);
                     echo "<div class='membros'><b>  Nome:</b>  $row[0]<br/>
                     <b>E-mail:</b> $row[1]<br/>
-                    <b>Usuário:</b> $row[2]<br/>
-                    <b>Permissão:</b> $row[3]<br/>
-                    <b>Observações:</b> $row[4]<br/>
-                    <b>Status:</b> $row[5]<br/>
-                    <b>RGA:</b> $row[6]<br/>
-                    <b>CPF:</b> $row[7]<br/>
-                    <b>Telefone:</b> $row[8]<br/>
-                    <b>Endereço:</b> $row[9]<br/>
-                    <b>Link do Lattes:</b> $row[10]<br/>
-                    <b>Data de Nascimento:</b>" . substr($row[11], -2) . "/" . substr($row[11], 5, 2) . "/" . substr($row[11], 0, 4) . "<br/>
-                    <b>Data de início:</b>" . substr($row[12], -2) . "/" . substr($row[12], 5, 2) . "/" . substr($row[12], 0, 4) . "<br/>";
+                    <b>Lattes:</b> $row[2]<br/>
+                    <b>Descrição:</b> $row[3]<br/>";
+                    if ($row[4] == 'A') {
+                        echo "<b>Situação:</b>"." Ativo". "<br/>";
+                    }
+                    else{
+                        echo "<b>Situação:</b>"." Inativo". "<br/>";
+                    }
+                    echo "<b>Data de início:</b>" . substr($row[5], -2) . "/" . substr($row[5], 5, 2) . "/" . substr($row[5], 0, 4) . "<br/>";
+                    if (!empty($row[6])) {
+                        echo "<b>Data Final:</b>" . substr($row[6], -2) . "/" . substr($row[6], 5, 2) . "/" . substr($row[6], 0, 4) . "<br/>";
+                    }
                     echo "</div><br/>";
                 }
                 ?>
@@ -116,17 +117,14 @@
             <td>
                 <?php
                 include ("includes/funcoes/conexao.php");
-                $query = "select u.nome, u.email, u.nome_usuario, u.permissao, u.descricao, u.status from usuario u where u.id_usuario not in (select t.id_usuario from tutor t) and u.id_usuario not in (select p.id_usuario from petiano p)";
+                $query = "select u.nome, u.email, u.lattes from usuario u where u.id_usuario not in (select t.id_usuario from tutor t) and u.id_usuario not in (select p.id_usuario from petiano p)";
                 $result = mysql_query($query);
                 $num = mysql_num_rows($result);
                 for ($i = 0; $i < $num; $i++) {
                     $row = mysql_fetch_row($result);
                     echo "<div class='membros'><b>  Nome:</b>  $row[0]<br/>
                     <b>E-mail:</b> $row[1]<br/>
-                    <b>Usuário:</b> $row[2]<br/>
-                    <b>Permissão:</b> $row[3]<br/>
-                    <b>Observações:</b> $row[4]<br/>
-                    <b>Status:</b> $row[5]<br/>";
+                    <b>Lattes:</b> $row[2]<br/>";
                     echo "</div><br/>";
                 }
                 ?>

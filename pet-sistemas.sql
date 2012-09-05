@@ -2,10 +2,10 @@
 -- version 3.4.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Aug 23, 2012 at 02:48 AM
--- Server version: 5.5.19
--- PHP Version: 5.4.6
+-- Servidor: localhost
+-- Tempo de Geração: 26/08/2012 às 18h27min
+-- Versão do Servidor: 5.5.19
+-- Versão do PHP: 5.3.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `pet-sistemas`
+-- Banco de Dados: `pet-sistemas`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `arquivos`
+-- Estrutura da tabela `arquivos`
 --
 
 CREATE TABLE IF NOT EXISTS `arquivos` (
@@ -36,13 +36,14 @@ CREATE TABLE IF NOT EXISTS `arquivos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `documentos`
+-- Estrutura da tabela `documentos`
 --
 
 CREATE TABLE IF NOT EXISTS `documentos` (
-  `nome` varchar(100) NOT NULL,
+  `tipo` enum('relatorio','planejamento','editais','modelos','outros') NOT NULL COMMENT 'tipos de documentos',
   `id_documentos` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `caminho_id_arquivos` int(10) unsigned NOT NULL,
+  `ano` int(11) NOT NULL,
   PRIMARY KEY (`id_documentos`),
   KEY `caminho_id_arquivos` (`caminho_id_arquivos`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -50,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `documentos` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faca_parte`
+-- Estrutura da tabela `faca_parte`
 --
 
 CREATE TABLE IF NOT EXISTS `faca_parte` (
@@ -63,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `faca_parte` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `noticia`
+-- Estrutura da tabela `noticia`
 --
 
 CREATE TABLE IF NOT EXISTS `noticia` (
@@ -83,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `noticia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petiano`
+-- Estrutura da tabela `petiano`
 --
 
 CREATE TABLE IF NOT EXISTS `petiano` (
@@ -93,21 +94,24 @@ CREATE TABLE IF NOT EXISTS `petiano` (
   `org_exp` varchar(15) NOT NULL,
   `telefone` varchar(15) NOT NULL,
   `endereco` text NOT NULL,
-  `lattes` varchar(100) NOT NULL,
   `data_nasc` date NOT NULL,
   `data_ini` date NOT NULL,
   `data_fim` date NOT NULL,
   `id_usuario` int(11) unsigned NOT NULL,
+  `pai` varchar(50) NOT NULL,
+  `mae` varchar(50) NOT NULL,
+  `foto_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`rga`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `rg` (`rg`,`org_exp`),
-  KEY `id_usuario` (`id_usuario`)
+  KEY `id_usuario` (`id_usuario`),
+  KEY `foto_id` (`foto_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projeto`
+-- Estrutura da tabela `projeto`
 --
 
 CREATE TABLE IF NOT EXISTS `projeto` (
@@ -125,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `projeto` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `publicacoes`
+-- Estrutura da tabela `publicacoes`
 --
 
 CREATE TABLE IF NOT EXISTS `publicacoes` (
@@ -142,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `publicacoes` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tutor`
+-- Estrutura da tabela `tutor`
 --
 
 CREATE TABLE IF NOT EXISTS `tutor` (
@@ -157,7 +161,7 @@ CREATE TABLE IF NOT EXISTS `tutor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario`
+-- Estrutura da tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -170,6 +174,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` varchar(100) DEFAULT NULL,
   `foto_id_arquivos` int(10) unsigned DEFAULT NULL,
   `status` varchar(1) NOT NULL,
+  `lattes` varchar(100) NOT NULL DEFAULT '''não possui''',
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `nome_usuario_UNIQUE` (`nome_usuario`),
   UNIQUE KEY `email_UNIQUE` (`email`),
@@ -179,7 +184,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuario_projeto`
+-- Estrutura da tabela `usuario_projeto`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario_projeto` (
@@ -192,60 +197,61 @@ CREATE TABLE IF NOT EXISTS `usuario_projeto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Constraints for dumped tables
+-- Restrições para as tabelas dumpadas
 --
 
 --
--- Constraints for table `documentos`
+-- Restrições para a tabela `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`caminho_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `faca_parte`
+-- Restrições para a tabela `faca_parte`
 --
 ALTER TABLE `faca_parte`
   ADD CONSTRAINT `faca_parte_ibfk_1` FOREIGN KEY (`caminho_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `noticia`
+-- Restrições para a tabela `noticia`
 --
 ALTER TABLE `noticia`
-  ADD CONSTRAINT `noticia_ibfk_2` FOREIGN KEY (`caminho_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`),
-  ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `noticia_ibfk_2` FOREIGN KEY (`caminho_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `petiano`
+-- Restrições para a tabela `petiano`
 --
 ALTER TABLE `petiano`
-  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
+  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `petiano_ibfk_3` FOREIGN KEY (`foto_id`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `projeto`
+-- Restrições para a tabela `projeto`
 --
 ALTER TABLE `projeto`
   ADD CONSTRAINT `projeto_ibfk_1` FOREIGN KEY (`arquivo_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `publicacoes`
+-- Restrições para a tabela `publicacoes`
 --
 ALTER TABLE `publicacoes`
   ADD CONSTRAINT `publicacoes_ibfk_1` FOREIGN KEY (`caminho_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `tutor`
+-- Restrições para a tabela `tutor`
 --
 ALTER TABLE `tutor`
   ADD CONSTRAINT `tutor_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
--- Constraints for table `usuario`
+-- Restrições para a tabela `usuario`
 --
 ALTER TABLE `usuario`
   ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`foto_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
 
 --
--- Constraints for table `usuario_projeto`
+-- Restrições para a tabela `usuario_projeto`
 --
 ALTER TABLE `usuario_projeto`
   ADD CONSTRAINT `usuario_projeto_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),

@@ -1,8 +1,5 @@
 <script type="text/javascript" src="../includes/jQuery/jquery.js"> </script>
 <script type="text/javascript" src="../includes/jQuery/jquery.mask.js"> </script>
-
-<!-- O Script abaixo é usado para esconder e mostrar o div referente ao conteúdo que será mostrado.
-A medida que o valor do componente 'radio' da tela é alterado um dos conteúdos é exibido -->
 <script type="text/javascript" >    
     $(document).ready(function() {
         $("#petiano").click(function() {
@@ -24,9 +21,7 @@ A medida que o valor do componente 'radio' da tela é alterado um dos conteúdos
     });
 </script>
 
-<!-- $_GET{"in"} é usado para obter o retorno da transacao de inclusao no banco, cada codigo pode representar um erro diferente.
-A partir do erro recebido, uma mensagem é fornecida -->
-<?php 
+<?php
 $in = $_GET{"in"};
 
 if ($in == 1)
@@ -37,7 +32,6 @@ else if ($in == 3)
     echo "<script type='text/javascript'> alert('Dados Inválidos, usuário não cadastrado!')</script>";
 ?>
 
-<!-- O Script abaixo é usado para mascarar componentes do tipo data, forcando a utilizacao de mascara -->
 <script type="text/javascript">
     $(document).ready(function(){
         $("#data_ini_petiano").focus(function(){
@@ -92,12 +86,12 @@ else if ($in == 3)
 
         <!-- Tutor -->
         <div id="div_tutor" hidden="hidden">
-            <b>Data de Início: </b><input id="data_ini_tutor" maxlength="10" size="8px" type="text" name="data_ini_tutor"/><br/>
+            <b>Data de Início: </b><input maxlength="10" size="8px" type="text" name="data_ini_tutor"/><br/>
         </div>
 
         <!-- PETIANO -->
         <div id="div_petiano" hidden="hidden">
-            <b >Data de Nascimento: </b><input id="data_nasc" maxlength="10" size="8px" type="text" name="data_nasc"/><br/>
+            <b >Data de Nascimento: </b><input maxlength="10" size="8px" type="text" name="data_nasc"/><br/>
             <b >RGA:  </b><input size="12px" type="text" name="rga" /><br/>
             <b >CPF:  </b><input size="11px" type="text"  name ="cpf"/><br/>
             <b >RG:  </b><input size="20px" type="text" name="rg"/><br/>
@@ -106,7 +100,7 @@ else if ($in == 3)
             <b >Endereço:  </b><textarea rows="5" cols="90" name="endereco"></textarea><br/>
             <b >Mãe:  </b><input size="50px" type="text" name="mae" /><br/>
             <b >Pai:  </b><input size="50px" type="text" name="pai" /><br/>
-            <b >Data de Início: </b><input id="data_ini_petiano" maxlength="10" size="8px" type="text" name="data_ini_petiano"/><br/>
+            <b >Data de Início: </b><input maxlength="10" size="8px" type="text" name="data_ini_petiano"/><br/>
         </div><br/>
         <input type="submit" value="Gravar"/>
 

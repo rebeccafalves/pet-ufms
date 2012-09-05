@@ -2,6 +2,7 @@
 
 <script type="text/javascript" src="includes/jQuery/jquery.js"> </script>
 <script type="text/javascript" src="includes/jQuery/jquery.mask.js"> </script>
+
 <!-- O Script abaixo é usado para esconder e mostrar o div referente ao conteúdo que será mostrado.
 Uma variável foi usada para controlar o check da tela, representando 'marcado' onde deverá aparecer conteúdo e 
 'desmarcado' não deverá aparecer conteúdo -->

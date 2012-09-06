@@ -11,13 +11,9 @@ if(isset($_GET["in"]))
 $in = $_GET["in"];
 
 if ($in == 1)
-    echo "<script type='text/javascript'> alert('Projeto Cadastrado com sucesso!')</script>";
-else if ($in == 2)
-    echo "<script type='text/javascript'> alert('Projeto não Cadastrado!')</script>";
-	
-if(isset($_GET["error"])){
-	$error = $_GET["error"];
-	echo "<script type='text/javascript'> alert('Insira novamente $error!')</script>";
+    echo "<script type='text/javascript'> alert('Projeto cadastrado com sucesso!')</script>";
+else if ($in == 2){
+	echo "<script type='text/javascript'> alert('Não foi possivel realizar o cadastro de projeto!')</script>";
 }
 
 	
@@ -57,11 +53,11 @@ if(isset($_GET["error"])){
             <br />
             
             <?php
-            $query = "select u.id_usuario, u.nome from usuario as u join tutor as t on u.id_usuario = t.id_usuario";
+            $query = "select u.id_usuario, u.nome from usuario as u";
             $query = mysql_query($query, $conexao);
             ?>
             
-            <b>Tutor:  </b><select  name="id_tutor" style="width:300px">
+            <b>Proprietário:  </b><select  name="id_usuario" style="width:300px">
                 <?php while ($dados = mysql_fetch_array($query)) { ?>
                     <option value="<?php echo $dados[0] ?>"><?php echo $dados[1] ?></option>
                 <?php } ?>

@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 26/08/2012 às 18h27min
--- Versão do Servidor: 5.5.19
+-- Tempo de Geração: 06/09/2012 às 18h36min
+-- Versão do Servidor: 5.5.25
 -- Versão do PHP: 5.3.9
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -96,11 +96,11 @@ CREATE TABLE IF NOT EXISTS `petiano` (
   `endereco` text NOT NULL,
   `data_nasc` date NOT NULL,
   `data_ini` date NOT NULL,
-  `data_fim` date NOT NULL,
+  `data_fim` date DEFAULT NULL,
   `id_usuario` int(11) unsigned NOT NULL,
   `pai` varchar(50) NOT NULL,
   `mae` varchar(50) NOT NULL,
-  `foto_id` int(10) unsigned NOT NULL,
+  `foto_id` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`rga`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `rg` (`rg`,`org_exp`),
@@ -115,16 +115,18 @@ CREATE TABLE IF NOT EXISTS `petiano` (
 --
 
 CREATE TABLE IF NOT EXISTS `projeto` (
-  `nome` int(11) NOT NULL,
-  `data_ini` int(11) NOT NULL,
-  `data_fim` int(11) NOT NULL,
-  `descricao` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `data_ini` date NOT NULL,
+  `data_fim` date DEFAULT NULL,
+  `descricao` text NOT NULL,
   `tipo` int(11) NOT NULL,
-  `id_projeto` int(11) unsigned NOT NULL,
+  `id_projeto` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `arquivo_id_arquivos` int(10) unsigned DEFAULT NULL,
+  `id_usuario` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id_projeto`),
-  KEY `arquivo_id_arquivos` (`arquivo_id_arquivos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `arquivo_id_arquivos` (`arquivo_id_arquivos`),
+  KEY `projeto_prop` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -223,14 +225,15 @@ ALTER TABLE `noticia`
 -- Restrições para a tabela `petiano`
 --
 ALTER TABLE `petiano`
-  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
-  ADD CONSTRAINT `petiano_ibfk_3` FOREIGN KEY (`foto_id`) REFERENCES `arquivos` (`id_arquivos`);
+  ADD CONSTRAINT `petiano_ibfk_3` FOREIGN KEY (`foto_id`) REFERENCES `arquivos` (`id_arquivos`),
+  ADD CONSTRAINT `petiano_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Restrições para a tabela `projeto`
 --
 ALTER TABLE `projeto`
-  ADD CONSTRAINT `projeto_ibfk_1` FOREIGN KEY (`arquivo_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`);
+  ADD CONSTRAINT `projeto_ibfk_1` FOREIGN KEY (`arquivo_id_arquivos`) REFERENCES `arquivos` (`id_arquivos`),
+  ADD CONSTRAINT `projeto_prop` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Restrições para a tabela `publicacoes`

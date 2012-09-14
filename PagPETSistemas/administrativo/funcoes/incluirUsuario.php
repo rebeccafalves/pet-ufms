@@ -39,18 +39,24 @@ if (strlen($usuario) == 0) { // verifica se o nome passado na tela tem tamanho 0
 } else {
 
     if ($radio == 'outro') {
-
+        echo 'a';
         $ret = incluirArquivo('usuarios'); // incluir o arquivo na pasta 'usuarios'
-
+        echo $ret;
         if ($ret == 1) { // Se o arquivo foi inserido
             $name = $_FILES['file']['name']; //obtem o nome do arquivo
-
-            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name order by id_arquivos desc'";
+            echo $name;
+            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name' order by id_arquivos desc";
+            echo $query;
             $res = mysql_query($query);
+            echo $res;
 
             if ($dados = mysql_fetch_array($res)) {
+                echo $dados;
                 $ins = "INSERT INTO `pet-sistemas`.`usuario` (nome_usuario, senha, nome, permissao, descricao, email, status, lattes, foto_id_arquivos) VALUES ('$usuario', '$senha', '$nome', '$permissao', '$descricao', '$email', '$status', '$lattes', '$dados[0]')";
+                echo $ins;
+
                 $insere = mysql_query($ins);
+                echo $insere;
             }
         }
     } else if ($radio == 'tutor') {
@@ -58,8 +64,7 @@ if (strlen($usuario) == 0) { // verifica se o nome passado na tela tem tamanho 0
         $ret = incluirArquivo('usuarios'); // incluir o arquivo na pasta 'usuarios'
         if ($ret == 1) { // Se o arquivo foi inserido
             $name = $_FILES['file']['name']; //obtem o nome do arquivo
-
-            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name order by id_arquivos desc'";
+            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name' order by id_arquivos desc";
             $res = mysql_query($query);
 
             if ($dados = mysql_fetch_array($res)) {
@@ -78,13 +83,15 @@ if (strlen($usuario) == 0) { // verifica se o nome passado na tela tem tamanho 0
                     $insere = mysql_query($ins);
                 }
             }
+        } else {
+            $in = 2;
         }
     } else if ($radio == 'petiano') {
         $ret = incluirArquivo('usuarios'); // incluir o arquivo na pasta 'usuarios'
         if ($ret == 1) { // Se o arquivo foi inserido
             $name = $_FILES['file']['name']; //obtem o nome do arquivo
 
-            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name order by id_arquivos desc'";
+            $query = "SELECT id_arquivos FROM arquivos WHERE caminho='arquivos/usuarios/$name' order by id_arquivos desc";
             $res = mysql_query($query);
 
             if ($dados = mysql_fetch_array($res)) {
@@ -118,4 +125,5 @@ header("Location: ../index.php?cod=cadastrarUsuarios&in=$in"); //encaminha para 
     document.write(txt.length);
 
 </script>
+
 

@@ -1,3 +1,7 @@
+<?php
+include("../includes/funcoes/conexao.php");
+?>
+
 <script type="text/javascript" src="../includes/jQuery/jquery.js"> </script>
 <script type="text/javascript" src="../includes/jQuery/jquery.mask.js"> </script>
 
@@ -22,7 +26,7 @@ else if ($in == 2)
 <div id="main">
     <h2 align="center">P&aacutegina Para Cadastro de Noticias</h2> 
     <div id="cadastroNoticias">
-        <form name="input" action="incluirCadastro.php" method="post">
+        <form name="input" action="funcoes/incluirNoticia.php" method="post" enctype = "multipart/form-data">
 		
 		    <b>Data de Inicio: </b><input id="datef" maxlength="10" size="8px" type="text" name="dataInicio" />
             <br/><br/>
@@ -34,8 +38,17 @@ else if ($in == 2)
             <b>Conteudo da Noticia:</b><br/><textarea rows="10" cols="30" name ="desc"></textarea>
             <br/><br/>
 			
-			<b>Autor: </b> <input size= "100px"type= "text" name= "autor" />
-			<br/><br/>
+			<?php
+            $query = "select u.id_usuario, u.nome from usuario as u";
+            $query = mysql_query($query, $conexao);
+            ?>
+
+            <b>Autor:  </b><select  name="id_usuario" style="width:200px">
+                <?php while ($dados = mysql_fetch_array($query)) { ?>
+                    <option value="<?php echo $dados[0] ?>"><?php echo $dados[1] ?></option>
+                <?php } ?>
+            </select>
+            <br />
 			
 			<b>Assunto: </b> <input size= "100px" type= "text" name= "assunto" />
 			<br/><br/>
@@ -48,8 +61,9 @@ else if ($in == 2)
             </select>
             <br/><br/>
 			
-			<input size = "100px" type="file" id="file" name="file" />
-			<br/><br/>
+			 <input size = "100px" type="file" id="file" name="file" />
+			<br/><br/> 
+			<!-- comentário!!! -->
 						
 			<input type = "submit" value = "Enviar Cadastro" />
 

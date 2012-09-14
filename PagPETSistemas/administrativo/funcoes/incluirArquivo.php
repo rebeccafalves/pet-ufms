@@ -15,12 +15,12 @@ function incluirArquivo($pasta) {
         $name = $_FILES['file']['name'];
 
         move_uploaded_file($temp, "../../arquivos/" . $pasta . "/" . $name);
-
+        $hoje = date(Ymd);
         $query = <<<hereDoc
-insert into `pet-sistemas`.`arquivos` (caminho) values ('arquivos/$pasta/$name')
+insert into `pet-sistemas`.`arquivos` (caminho, data) values ('arquivos/$pasta/$name', $hoje )
 hereDoc;
     }
-    
+
     $sql = mysql_query($query);
 
 

@@ -3,6 +3,7 @@
 function incluirArquivo($pasta) {
     include ("../../includes/funcoes/conexao.php");
     $foto = $_POST["file"];
+    $name = null;
 
     $type = $_FILES['file']['type'];
     $size = $_FILES['file']['size'];
@@ -12,14 +13,11 @@ function incluirArquivo($pasta) {
         return 4; //acima do limite
     } else {
         $temp = $_FILES['file']['tmp_name'];
-        $hoje = date(Ymd);
-
         $name = $_FILES['file']['name'];
-
 
         move_uploaded_file($temp, "../../arquivos/" . $pasta . "/" . $name);
         $query = <<<hereDoc
-insert into `pet-sistemas`.`arquivos` (caminho, data) values ('arquivos/$pasta/$name' , '$hoje' )
+insert into `pet-sistemas`.`arquivos` (caminho, data) values ('arquivos/$pasta/$name' , current_date() )
 hereDoc;
     }
 

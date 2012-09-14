@@ -72,7 +72,7 @@ else if ($in == 3)
             <option value="3">Admin</option>
         </select><br/><br/>  
         <b>Escolha uma Foto:</b><br/>
-        <input type="file" id="file" name="foto" /><br/><br/>
+        <input type="file" id="file" name="file" /><br/><br/>
         <b>Detalhes sobre o Membro: </b><br/><textarea rows="10" cols="90" name="descricao"></textarea>
         <b>Status: </b><select name="status">
             <option value="A">Ativo</option>

@@ -12,12 +12,14 @@ function incluirArquivo($pasta) {
         return 4; //acima do limite
     } else {
         $temp = $_FILES['file']['tmp_name'];
+        $hoje = date(Ymd);
+
         $name = $_FILES['file']['name'];
 
+
         move_uploaded_file($temp, "../../arquivos/" . $pasta . "/" . $name);
-        $hoje = date(Ymd);
         $query = <<<hereDoc
-insert into `pet-sistemas`.`arquivos` (caminho, data) values ('arquivos/$pasta/$name', $hoje )
+insert into `pet-sistemas`.`arquivos` (caminho, data) values ('arquivos/$pasta/$name' , '$hoje' )
 hereDoc;
     }
 

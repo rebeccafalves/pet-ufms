@@ -27,7 +27,6 @@ A medida que o valor do componente 'radio' da tela é alterado um dos conteúdos
 <!-- $_GET{"in"} é usado para obter o retorno da transacao de inclusao no banco, cada codigo pode representar um erro diferente.
 A partir do erro recebido, uma mensagem é fornecida -->
 <?php
-
 $in = $_GET{"in"};
 
 if ($in == 1)
@@ -73,7 +72,7 @@ else if ($in == 3)
             <option value="3">Admin</option>
         </select><br/><br/>  
         <b>Escolha uma Foto:</b><br/>
-        <input type="file" id="file" name="file" /><br/><br/>
+        <input type="file" id="file" name="file" accept="image/*"/><br/><br/>
         <b>Detalhes sobre o Membro: </b><br/><textarea rows="10" cols="90" name="descricao"></textarea>
         <b>Status: </b><select name="status">
             <option value="A">Ativo</option>

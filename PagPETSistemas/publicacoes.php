@@ -14,19 +14,19 @@ $count = 1;
 
 while($numproj > 0 && $count <= 10 && $count <= $numproj) {
 ?>
-
-<a href="index.php"><img src="images/interrogacao.jpg" alt="interrogacao" align="left" width="76px" height="76px"></a>
+<div style="float:left;height:150px;width:150px"><img src="images/pet.jpg" style="width:150px;height:150px"/></div>
 
 <div style="margin-left:86px">
-<p style =	"font-size:11px;
-			line-height: 5%;">
-			<b>Lorem</b></p>
+
 			
 <h2><a href="index.php" style =	"font-size: 20px;
-								color: black;">
-								Lorem ipsum</a></h2>
+								color: black;"><p>
+								Apostila de C, C++</p></a></h2>
 								
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+<p>O professor Fábio Viduani Martinez, professor da Facom, publicou em 2012 a Apostila sobre C e C++, são coletâneas de textos para o ensinamento de tais 
+linguagens. De forma didática, cada assunto possui exercícios para fixar o conteúdo. Atualmente ministra a aula de Análise de Algoritmo para o sexto semestre 
+do curso Análise de Sistema.  </p>
+<p> Em 2013, o professor vai realizar seu pós-doutorado na Alemanha, voltando somente após 2015.  </p>
 </div>
 <br />
 <hr>

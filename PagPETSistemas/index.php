@@ -48,7 +48,6 @@ if ($_GET['cod'] != null)
                 <li <?php if($ID == 'noticias') setCurrent(); ?>><a href="?cod=noticias">Notícias</a></li>  <!-- banco -->
                 <li <?php if($ID == 'projetos') setCurrent(); ?>><a href="?cod=projetos">Projetos</a></li>  <!-- banco -->
                 <li <?php if($ID == 'publicacoes') setCurrent(); ?>><a href="?cod=publicacoes">Publicações</a></li>  <!-- banco -->
-                <li <?php if($ID == 'planejamento') setCurrent(); ?>><a href="?cod=documento">Documentos</a></li>  <!-- banco -->
                 <li <?php if($ID == 'multimidia') setCurrent(); ?>><a href="?cod=multimidia">Multimídia</a></li> <!-- html -->
                 <li <?php if($ID == 'facaParte') setCurrent(); ?>><a href="?cod=facaParte">Faça Parte</a></li> <!-- html -->
                 <li <?php if($ID == 'contato') setCurrent(); ?>><a href="?cod=contato">Contato</a></li> <!-- mandar por e-mail -->

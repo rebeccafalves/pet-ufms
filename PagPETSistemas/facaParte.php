@@ -5,11 +5,15 @@ Saiba mais sobre os grupos PET no portal do Ministério da Educação (<span ><a
 
 <?php
 include ("includes/funcoes/conexao.php");
-$query = "select caminho_arquivo from faca_parte where idfaca_parte = (select max(idfaca_parte) from faca_parte)";
+$query = "select caminho_id_arquivos from faca_parte where id_faca_parte = (select max(id_faca_parte) from faca_parte)";
 $result = mysql_query($query);
 $row = mysql_fetch_row($result);
-echo $row[1];
+
+$query1 = "select caminho from arquivos where id_arquivos = $row[0]";
+$result1 = mysql_query($query1);
+$caminho = mysql_fetch_row($result1);
 ?>
+<?php echo $caminho[0]."koko"; ?>
 </h1><br/>
-(<a href="<?php echo $row[0]; ?>" target="_blank">Link para arquivo de inscrição</a>)
+(<a href="<?php echo $caminho[0]; ?>" target="_blank">Link para arquivo de inscrição</a>)
 

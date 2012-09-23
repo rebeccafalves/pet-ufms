@@ -2,14 +2,14 @@
 <?php
 
 $conexao = mysql_connect("localhost", "root", "root") or die("falhou ao acessar o bd");
-mysql_select_db("petsistemas", $conexao);
+mysql_select_db("pet-sistemas", $conexao);
 
 $login = $_POST["login"];
 $password = md5(utf8_encode($_POST["password"]));
 
 //query SQL
 echo $login . "   -    " . $password;
-$strSQL = "select * from membros where nome = '$login' and senha = '$password' and permissao = 1";
+$strSQL = "select id_usuario from usuario where nome_usuario = '$login' and senha = '$password' and permissao = 1";
 
 // Executa a query (o recordset $rs cont�m o resultado da query)
 $rs = mysql_query($strSQL);

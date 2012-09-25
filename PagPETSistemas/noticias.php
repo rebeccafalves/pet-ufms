@@ -7,34 +7,43 @@
 				
 <h2>Últimas notícias<h2>
 </div>
+<?php //Consulta e exibicao dos dados de tutor
+    include ("includes/funcoes/conexao.php");
+    $query = "select n.titulo, n.tipo, n.conteudo, n.caminho_id_arquivos from noticia n";
+    $result = mysql_query($query);
+    $num = mysql_num_rows($result);
+    
+    for ($i = 0; $i < $num; $i++) {
+        $row = mysql_fetch_row($result);
 
-<?php
-$numproj = 6;
-$count = 1;
 
-while($numproj > 0 && $count <= 10 && $count <= $numproj) {
+        $pergunta = "select caminho from arquivos where id_arquivos = $row[3]";
+        $resultado = mysql_query($pergunta);
+        $linha = mysql_fetch_row($resultado);
+    
+    
+
+        ?>
+        <img src= <?php echo $linha[0]; ?> alt="A imagem não foi encontrada" width="300" height="300" > </img>
+        <?php 
+
+
+        echo "<div class='noticia'> <b>Titulo:</b> $row[0]<br/>";
+        echo "<b>tipo:</b>";
+        if($row[1] == "1")
+            echo "ensino <br/>";
+        else if($row[1] == "2")
+            echo "pesquisa <br/>";
+        else
+            echo "extens&atildeo <br/>";
+        
+        echo "<b>conteudo:</b> $row[2]<br/>";
+        echo "<br/> <hr>";
+        echo "</div>";
+        //pelo amor de Deus de certooooooo
+    }
+    
 ?>
 
-<a href="index.php"><img src="images/interrogacao.jpg" alt="interrogacao" align="left" width="76px" height="76px"></a>
-
-<div style="margin-left:86px">
-<p style =	"font-size:11px;
-			line-height: 5%;">
-			<b>Lorem</b></p>
-			
-<h2><a href="index.php" style =	"font-size: 20px;
-								color: black;">
-								Lorem ipsum</a></h2>
-								
-<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-</div>
-<br />
-<hr>
 
 
-<?php
-	$count += 1;
-}
-
-
-?>
